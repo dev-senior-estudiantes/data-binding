@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './calculadora.html',
   styleUrl: './calculadora.css'
 })
+
 export class Calculadora {
   public numero1: number = 0;
   public numero2: number= 0;
@@ -35,9 +36,8 @@ export class Calculadora {
     this.operacionActual = 'suma';
     this.mostrarResultado = true;
     // Template literal $ interpolación strings, Agregar la operación al historial
-    this.agregarAlHistorial(´${this.numero1}+${this.numero2}=${this.resultado}´);
+    this.agregarAlHistorial(` ${this.numero1} + ${this.numero2} = ${this.resultado} `);
 
-    
   }
 
   public restar(): void{
@@ -113,3 +113,4 @@ export class Calculadora {
 
 
 }
+
