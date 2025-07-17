@@ -1,2 +1,40 @@
 <!-- Crear el html utilizando interpolación de Angular, mostrando múltiples valores, y utilizando propiedad PROPERTY BINDING y también, event binding y ng modules.-->
-<p>calculadora works! </p>
+<div class="calculadora-container" >
+  <h1>{{ titulo || 'Calculadora Angular' }}</h1>
+
+  <!-- Inputs para los números -->
+  <div>
+    <label>
+      Número 1:
+      <input type="number" [(ngModel)]="numero1">
+    </label>
+    <label>
+      Número 2:
+      <input type="number" [(ngModel)]="numero2">
+    </label>
+  </div>
+
+  <!-- Botones de operaciones -->
+  <div>
+    <button (click)="sumar()">Sumar</button>
+    <button (click)="restar()">Restar</button>
+    <button (click)="multiplicar()">Multiplicar</button>
+    <button (click)="dividir()">Dividir</button>
+    <button (click)="limpiar()">Limpiar</button>
+  </div>
+
+  <!-- Mostrar resultado solo si mostrarResultado es true -->
+  <div *ngIf="mostrarResultado">
+    <h2>Resultado: {{ resultado }}</h2>
+    <p>Operación actual: {{ operacionActual }}</p>
+  </div>
+
+  <!-- Historial de operaciones -->
+  <div *ngIf="historial.length > 0">
+    <h3>Historial ({{ obtenerNumeroOperaciones() }} operaciones):</h3>
+    <ul>
+      <li *ngFor="let operacion of historial">{{ operacion }}</li>
+    </ul>
+    <button (click)="limpiarHistorial()">Limpiar historial</button>
+  </div>
+</div>
