@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-calculadora',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './calculadora.html',
-  styleUrl: './calculadora.css'
+  styleUrls: ['./calculadora.css']
 })
 
 export class Calculadora {
@@ -100,7 +101,7 @@ export class Calculadora {
     switch (operacion){
       case 'suma':
         return num1 + num2;
-      case 'resta':
+      case 'resta': 
         return num1 - num2;
       case 'multiplicacion':
         return num1 * num2;

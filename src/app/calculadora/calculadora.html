@@ -26,4 +26,30 @@
     </span>
   </div>
 
+<div class="calculadora-container" >
+  <h1>{{ titulo || 'Calculadora Angular' }}</h1>
+
+  <!-- Inputs para los números -->
+  <div>
+    <label>
+      Número 1:
+      <input type="number" [(ngModel)]="numero1">
+    </label>
+    <label>
+      Número 2:
+      <input type="number" [(ngModel)]="numero2">
+    </label>
+  </div>
+
+  <!-- Botones de operaciones -->
+
+
+  <!-- Mostrar resultado solo si mostrarResultado es true -->
+  <div *ngIf="mostrarResultado">
+    <h2>Resultado: {{ resultado }}</h2>
+    <p>Operación actual: {{ operacionActual }}</p>
+  </div>
+
+  <!-- Historial de operaciones -->
+
 </div>
