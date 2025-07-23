@@ -1,2 +1,29 @@
 <!-- Crear el html utilizando interpolación de Angular, mostrando múltiples valores, y utilizando propiedad PROPERTY BINDING y también, event binding y ng modules.-->
+
+
 <p>calculadora works! </p>
+
+<div
+  class="info-panel"
+  [class.panel-activo]="mostrarResultado"
+  [class.tiene-opercaciones]="historial && historial.length > 0">
+
+  <div class="info-operacion">
+    <h2>Operacion actual: {{operacionActual ? operacionActual : 'ninguna'}}</h2>
+    <p>Total de operaciones: {{historial ? historial.length : 0}}</p>
+  </div>
+
+  <div class="info-resultado">
+    <h2>Resulatdo</h2>
+    <div class="resultado-numero">
+      {{resultado !== null ? resultado : '-' }}
+    </div>
+    <span
+    Class="badge"
+    [class.badge-new]="mostrarResultado"
+    [class.badge-old]="!mostrarResultado">
+      {{mostrarResultado ? 'Nueva' : 'Antigua'}}
+    </span>
+  </div>
+
+</div>
