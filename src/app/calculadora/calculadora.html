@@ -1,4 +1,31 @@
 <!-- Crear el html utilizando interpolación de Angular, mostrando múltiples valores, y utilizando propiedad PROPERTY BINDING y también, event binding y ng modules.-->
+
+
+<p>calculadora works! </p>
+
+<div
+  class="info-panel"
+  [class.panel-activo]="mostrarResultado"
+  [class.tiene-opercaciones]="historial && historial.length > 0">
+
+  <div class="info-operacion">
+    <h2>Operacion actual: {{operacionActual ? operacionActual : 'ninguna'}}</h2>
+    <p>Total de operaciones: {{historial ? historial.length : 0}}</p>
+  </div>
+
+  <div class="info-resultado">
+    <h2>Resulatdo</h2>
+    <div class="resultado-numero">
+      {{resultado !== null ? resultado : '-' }}
+    </div>
+    <span
+    Class="badge"
+    [class.badge-new]="mostrarResultado"
+    [class.badge-old]="!mostrarResultado">
+      {{mostrarResultado ? 'Nueva' : 'Antigua'}}
+    </span>
+  </div>
+
 <div class="calculadora-container" >
   <h1>{{ titulo || 'Calculadora Angular' }}</h1>
 
@@ -15,13 +42,7 @@
   </div>
 
   <!-- Botones de operaciones -->
-  <div>
-    <button (click)="sumar()">Sumar</button>
-    <button (click)="restar()">Restar</button>
-    <button (click)="multiplicar()">Multiplicar</button>
-    <button (click)="dividir()">Dividir</button>
-    <button (click)="limpiar()">Limpiar</button>
-  </div>
+
 
   <!-- Mostrar resultado solo si mostrarResultado es true -->
   <div *ngIf="mostrarResultado">
@@ -30,11 +51,5 @@
   </div>
 
   <!-- Historial de operaciones -->
-  <div *ngIf="historial.length > 0">
-    <h3>Historial ({{ obtenerNumeroOperaciones() }} operaciones):</h3>
-    <ul>
-      <li *ngFor="let operacion of historial">{{ operacion }}</li>
-    </ul>
-    <button (click)="limpiarHistorial()">Limpiar historial</button>
-  </div>
+
 </div>
