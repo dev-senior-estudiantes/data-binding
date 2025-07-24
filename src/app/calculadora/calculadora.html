@@ -3,7 +3,8 @@
 
 <div class="calculadora-container">
   <h1 class="titulo" > {{ titulo || "CALCULADORA ANGULAR" }}</h1>
-<!-- Panel de Informacion -->
+  
+  <!-- Panel de Informacion -->
   <div class="info-panel" 
   [class.panel-activo]="mostrarResultado"
   [class.tiene-opercaciones]="historial && historial.length > 0" >
