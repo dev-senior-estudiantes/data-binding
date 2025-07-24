@@ -36,15 +36,12 @@
   </div>
 
   <!-- Inputs para los números -->
-  <div>
-    <label>
-      Número 1:
-      <input type="number" [(ngModel)]="numero1" />
-    </label>
-    <label>
-      Número 2:
-      <input type="number" [(ngModel)]="numero2" />
-    </label>
+  <div class="entrada-numeros">
+    <h2>Ingresa los números:</h2>
+    <label for="numero1">Número 1:</label>
+    <input id="numero1" class="input-numero" type="number" placeholder="Ejemplo: 123" [(ngModel)]="numero1" />
+    <label for="numero2">Número 2:</label>
+    <input id="numero2" class="input-numero" type="number" placeholder="Ejemplo: 123" [(ngModel)]="numero2" />
   </div>
 
   <!-- Botones de operaciones -->
