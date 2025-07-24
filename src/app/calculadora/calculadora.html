@@ -1,55 +1,54 @@
 <!-- Crear el html utilizando interpolación de Angular, mostrando múltiples valores, y utilizando propiedad PROPERTY BINDING y también, event binding y ng modules.-->
 
 
-<p>calculadora works! </p>
-
-<div
-  class="info-panel"
+<div class="calculadora-container">
+  <h1 class="titulo" > {{ titulo || "CALCULADORA ANGULAR" }}</h1>
+<!-- Panel de Informacion -->
+  <div class="info-panel" 
   [class.panel-activo]="mostrarResultado"
-  [class.tiene-opercaciones]="historial && historial.length > 0">
-
+  [class.tiene-opercaciones]="historial && historial.length > 0" >
   <div class="info-operacion">
-    <h2>Operacion actual: {{operacionActual ? operacionActual : 'ninguna'}}</h2>
-    <p>Total de operaciones: {{historial ? historial.length : 0}}</p>
+    <h2>
+      Operacion actual: {{ operacionActual ? operacionActual : "ninguna" }}
+    </h2>
+    <p>Total de operaciones: {{ historial ? historial.length : 0 }}</p>
   </div>
 
   <div class="info-resultado">
-    <h2>Resulatdo</h2>
+    <h2>Resultado</h2>
     <div class="resultado-numero">
-      {{resultado !== null ? resultado : '-' }}
+      {{ resultado !== null ? resultado : "-" }}
     </div>
     <span
-    Class="badge"
-    [class.badge-new]="mostrarResultado"
-    [class.badge-old]="!mostrarResultado">
-      {{mostrarResultado ? 'Nueva' : 'Antigua'}}
+      Class="badge"
+      [class.badge-new]="mostrarResultado"
+      [class.badge-old]="!mostrarResultado"
+    >
+      {{ mostrarResultado ? "Nueva" : "Antigua" }}
     </span>
   </div>
-
-<div class="calculadora-container" >
-  <h1>{{ titulo || 'Calculadora Angular' }}</h1>
-
-  <!-- Inputs para los números -->
-  <div>
-    <label>
-      Número 1:
-      <input type="number" [(ngModel)]="numero1">
-    </label>
-    <label>
-      Número 2:
-      <input type="number" [(ngModel)]="numero2">
-    </label>
   </div>
-
-  <!-- Botones de operaciones -->
-
-
+  
   <!-- Mostrar resultado solo si mostrarResultado es true -->
   <div *ngIf="mostrarResultado">
     <h2>Resultado: {{ resultado }}</h2>
     <p>Operación actual: {{ operacionActual }}</p>
   </div>
 
-  <!-- Historial de operaciones -->
+  <!-- Inputs para los números -->
+  <div>
+    <label>
+      Número 1:
+      <input type="number" [(ngModel)]="numero1" />
+    </label>
+    <label>
+      Número 2:
+      <input type="number" [(ngModel)]="numero2" />
+    </label>
+  </div>
 
+  <!-- Botones de operaciones -->
+
+
+  <!-- Historial de operaciones -->
 </div>
