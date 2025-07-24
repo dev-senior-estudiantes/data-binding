@@ -14,7 +14,7 @@ export class Calculadora {
   public resultado: number = 0;
 
   //Variable string para el título de la calculadora
-  public titulo: string = 'Calculadora con data-binding';
+  public titulo: string = '';
 
   //Variable string para la operación actual
   public operacionActual: string = 'ninguna';
