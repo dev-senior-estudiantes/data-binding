@@ -1,35 +1,34 @@
 <!-- Crear el html utilizando interpolación de Angular, mostrando múltiples valores, y utilizando propiedad PROPERTY BINDING y también, event binding y ng modules.-->
 
-
 <div class="calculadora-container">
   <h1 class="titulo" > {{ titulo || "CALCULADORA ANGULAR" }}</h1>
   
   <!-- Panel de Informacion -->
-  <div class="info-panel" 
+  <div class="info-panel"
   [class.panel-activo]="mostrarResultado"
   [class.tiene-opercaciones]="historial && historial.length > 0" >
-  <div class="info-operacion">
-    <h2>
-      Operacion actual: {{ operacionActual ? operacionActual : "ninguna" }}
-    </h2>
-    <p>Total de operaciones: {{ historial ? historial.length : 0 }}</p>
+    <div class="info-operacion">
+      <h2>
+        Operacion actual: {{ operacionActual ? operacionActual : "ninguna" }}
+      </h2>
+      <p>Total de operaciones: {{ historial ? historial.length : 0 }}</p>
+    </div>
+
+    <div class="info-resultado">
+      <h2>Resultado</h2>
+      <div class="resultado-numero">
+        {{ resultado !== null ? resultado : "-" }}
+      </div>
+      <span
+        Class="badge"
+        [class.badge-new]="mostrarResultado"
+        [class.badge-old]="!mostrarResultado"
+      >
+        {{ mostrarResultado ? "Nueva" : "Antigua" }}
+      </span>
+    </div>
   </div>
 
-  <div class="info-resultado">
-    <h2>Resultado</h2>
-    <div class="resultado-numero">
-      {{ resultado !== null ? resultado : "-" }}
-    </div>
-    <span
-      Class="badge"
-      [class.badge-new]="mostrarResultado"
-      [class.badge-old]="!mostrarResultado"
-    >
-      {{ mostrarResultado ? "Nueva" : "Antigua" }}
-    </span>
-  </div>
-  </div>
-  
   <!-- Mostrar resultado solo si mostrarResultado es true -->
   <div *ngIf="mostrarResultado">
     <h2>Resultado: {{ resultado }}</h2>
@@ -46,6 +45,14 @@
   </div>
 
   <!-- Botones de operaciones -->
+  <div class="botones-operaciones">
+    <button class="btn btn-suma" (click)="sumar()" [disabled]="numero1 === null || numero2 === null">➕ Sumar</button>
+    <button class="btn btn-resta" (click)="restar()" [disabled]="numero1 === null || numero2 === null">➖ Restar</button>
+    <button class="btn btn-multiplicacion" (click)="multiplicar()" [disabled]="numero1 === null || numero2 === null">✖️ Multiplicar</button>
+    <button class="btn btn-division" (click)="dividir()" [disabled]="numero1 === null || numero2 === null || numero2 === 0">➗ Dividir</button>
+    <button class="btn btn-limpiar" (click)="limpiar()">Limpiar</button>
+    <button class="btn btn-limpiar-historial" (click)="limpiarHistorial()" [disabled]="!historial || historial.length === 0"> Limpiar Historial</button>
+  </div>
 
 
   <!-- Historial de operaciones -->
