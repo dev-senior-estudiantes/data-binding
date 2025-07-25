@@ -1,128 +1,230 @@
-/* calculadora.css */
-
-.calculadora-container {
-  width: 800px;         /* Siempre 800px en pantallas grandes */
-  max-width: 95vw;      /* Pero nunca más ancho que la pantalla */
+.calculadora-container{
+  width: 130vh;
+  max-width: 1080px;
+  min-height: 320px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #fff;
-  padding: 0 25px;
+  padding: 5px 25px;
   border-radius: 16px;
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
-  box-sizing: border-box;
+  box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+  text-align: center;
 }
-
-.info-panel {
-  width: 100%;
-  min-width: 0;
-  background: #f2f2f3;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
-  border-radius: 16px;
-  box-sizing: border-box;
-  margin: 0;
-}
-.badge{
-  background-color: red;
-  color: #fff;
-  padding: 4px 8px;
-  border: 1px solid rgba(255, 0, 0, 0.5); /* Simulación de inset-ring con un borde rojo claro */
-  box-shadow: inset 0 0 0 1px rgba(255, 0, 0, 0.15);
-  border-radius: 16px;
-  margin-left: 14px;
-}
-
 h1{
   font-family: 'Anton SC', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
-.calculadora-container input[type="number"] {
-  width: 100px;
-  padding: 0.5rem;
-  margin: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.estructura-flex{  
+  /* border:1px solid aqua; */
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 16px;
+  /* grid-template-rows: 1fr 1fr; */
+
+
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* border: 1px solid red; */
+  padding: 4px 4px;
+  width: 100%;
+  max-width: 780px;
+  min-width: 0;
+}
+.info-panel, .panel-action, .debug-sep{
+  padding: 12px;
+  /* background: yellow; */
+}
+.info-panel{
+  background: #23272f;
+  color: #babecc;
+  /* border: 1px solid yellowgreen; */
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16px;
+  padding: 16px;
+  gap: 16px;
+  transition: all 0.3s ease;
 }
 
-.calculadora-container button:hover {
-  background: #1565c0;
+.info-operacion, .info-resultado {
+  flex: 1;
+  min-width: 0; /* Permite que los elementos se contraigan */
+}
+
+.info-operacion h2 {
+  font-size: 1.1rem;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.info-operacion p {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.info-resultado {
+  text-align: center;
+}
+
+.irp1 h2 {
+  font-size: 1rem;
+  margin: 0 0 8px 0;
 }
 
 .resultado-numero {
-  margin-bottom: 20px; /* Ajusta el valor según lo que necesites */
+  margin-bottom: 12px; 
   font-family: 'Anton SC',sans-serif;
   font-weight: 900;
-  font-size:32px;
-  color: #0a192f;
+  font-size: clamp(24px, 4vw, 32px); /* Responsive font size */
+  color: #c9c9c9;
+  line-height: 1;
 }
 
-.badge {
-  margin-top: 10px; /* Opcional, si quieres aún más separación */
+.panel-action{
+  background: #23272f;
+  color: #babecc;
+  /* border: 1px solid rgb(6, 204, 6); */
+  border-radius: 16px;
+  
 }
-
-.historial-panel .badge {
-  font-size: 0.75em;
-  padding: 2px 7px;
-  border-radius: 10px;
-  vertical-align: middle;
-  line-height: 1.1;
-}
-
-.historial-lista {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.historial-item {
+.paneles-operaciones{
+  /* border: 1px solid blue; */
+  margin: 4px 4px;
   display: flex;
+  justify-content: space-between;
+}
+
+.debug-info{
+  background: #23272f;
+  border: 1px solid violet;
+  margin: 4px 4px;
+  background: #23272f;
+  border: 2px solid #4fc3f7;
+  border-radius: 16px;
+  color: #e3f2fd;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.08);
+  /* align-self: flex-start; */
+  /* align-items:end; */
+  text-align: left;
+  align-items:left;
+  
+}
+.title-panel{
+  text-align: center;
+  padding-top: 10px;
+}
+.debug-sep{
+  /* border: 1px solid rgb(58, 1, 39); */
+  margin: 5px 5px;
+  width: 200px;
+  background: #23272f;
+  /* display: flex;
+  justify-content: space-between; */
+}
+.debug-info h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #4fc3f7;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+
+.debug-info pre {
+  background: #1a1d23;
+  color: #b2ebf2;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.95em;
+  overflow-x: auto;
+  margin-bottom: 12px;
+}
+
+.debug-details p {
+  margin: 4px 0;
+  padding-left: 8px;
+  font-size: 1em;
+  color: #b2ebf2;
+  border-left: 3px solid #4fc3f7;
+}
+.entrada-numeros{
+  padding: 16px;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  padding: 1px 4px; /* Aumenta el espaciado vertical */
-  border-bottom: 1px solid #eee;
+  gap: 20px;
+  margin: 4px 4px;
+  transition: all 0.3s ease;
 }
 
-.historial-item:last-child {
-  border-bottom: none;
+.entrada-numeros h2 {
+  font-size: 1.2rem;
+  margin: 0 0 16px 0;
+  color: #babecc;
+  text-align: center;
 }
 
-
-@media (max-width: 500px) {
-  .calculadora-container {
-    width: 100%;
-    max-width: 95vw;
-    padding: 1rem;
-  }
-  .info-panel {
-    flex-direction: column;
-    padding: 1rem;
-  }
-  .calculadora-container input[type="number"] {
-    width: 80px;
-  }
+.entrada-numeros label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #babecc;
+  font-size: 0.95rem;
 }
 
-.botones-operaciones {
+.entrada-numeros .input-numero {
+  width: 120px;
+  padding: 8px 12px;
+  border: 2px solid #4a5568;
+  border-radius: 8px;
+  background: #2d3748;
+  color: #e2e8f0;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.entrada-numeros .input-numero:focus {
+  outline: none;
+  border-color: #4fc3f7;
+  box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.1);
+}
+
+.entrada-numeros .input-numero::placeholder {
+  color: #718096;
+}
+.botones-operaciones{
+  margin: 4px 4px;
+  padding: 16px;
+  /* border: 1px solid orange; */
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   margin-top: 20px;
   padding-bottom: 20px;
+  transition: all 0.3s ease;
 }
 
 .btn {
-  padding: 8px 18px;
+  padding: 10px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  min-width: 120px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .btn:disabled {
@@ -161,31 +263,141 @@ h1{
   background: #607d8b;
   color: #fff;
 }
+/* Eliminado - ya está definido arriba con mejor responsividad */
+.historial-panel{
+  text-align: left;
 
-.paneles-operaciones {
-  
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
-  justify-content: space-between;
+}
+.badge{
   align-items: center;
-  padding: 2rem;
-  box-sizing: border-box;
-  margin: 32px 0 0 0;
-  flex-wrap: nowrap; 
-  width: 100%;
-  min-width: 650px; 
-  background: #f0f4f8;
-  margin: 32px;
-  border-radius: 16px;
+}
+.irp{
+  font-size: 0.8em;
+  padding: 4px 8px;
+  border-radius: 10px;
+  background: rgb(224, 145, 9);
+  color: #000000;
+  margin: 8px 0;
+  text-align: center;
+  display: inline-block;
 }
 
-.resultado-panel, .historial-panel {
-  min-width: 320px;
-  max-width: 400px;
-  flex: 0 0 350px; /* Fijo para que no se reduzcan demasiado */
-  box-sizing: border-box;
+.historial-panel .badge {
+  font-size: 0.75em;
+  padding: 2px 7px;
+  border-radius: 10px;
+  vertical-align:middle;
+  line-height: 1.1;
+  background: rgb(224, 145, 9);
+  color: #000000;
+  padding: 2px 8px;
+  margin: 10px 15px;
+  font-weight: 400;  
 }
+.badge-nuevo, .badge-antiguo{
+  margin: 20px 20px;
+}
+
+
+
+
+
+@media (max-width: 1400px) {
+  .info-panel {
+    padding: 14px;
+    gap: 12px;
+  }
+  
+  .info-operacion h2 {
+    font-size: 1rem;
+  }
+  
+  .resultado-numero {
+    font-size: clamp(20px, 3.5vw, 28px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .info-panel {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .info-operacion h2 {
+    font-size: 0.95rem;
+  }
+  
+  .info-operacion p {
+    font-size: 0.85rem;
+  }
+  
+  .resultado-numero {
+    font-size: clamp(18px, 3vw, 24px);
+  }
+}
+
+@media (max-width: 900px) {
+  .info-panel {
+    flex-direction: row;
+    padding: 10px;
+    gap: 8px;
+  }
+  
+  .info-operacion h2 {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+  
+  .info-operacion p {
+    font-size: 0.8rem;
+  }
+  
+  .resultado-numero {
+    font-size: clamp(16px, 2.5vw, 20px);
+    margin-bottom: 8px;
+  }
+  
+  .irp {
+    font-size: 0.75em;
+    padding: 3px 6px;
+  }
+}
+
+@media (max-width: 700px) {
+  .info-panel {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .info-operacion, .info-resultado {
+    width: 100%;
+  }
+  
+  .info-operacion h2 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+  
+  .info-operacion p {
+    font-size: 0.85rem;
+  }
+  
+  .resultado-numero {
+    font-size: clamp(20px, 4vw, 24px);
+    margin-bottom: 10px;
+  }
+  
+  .irp {
+    font-size: 0.8em;
+    padding: 4px 8px;
+  }
+}
+
+/* Media queries duplicadas eliminadas - ya están definidas más abajo */
+
+
 
 @media (max-width: 900px) {
   .paneles-operaciones {
@@ -194,9 +406,267 @@ h1{
     gap: 20px;
     min-width: unset;
   }
-  .resultado-panel, .historial-panel {
+  .resultado-panel, .historial-panel, .debug-info {
     max-width: 100%;
     min-width: unset;
     flex: 1 1 100%;
   }
 }
+
+@media (max-width: 1200px) {
+  .estructura-flex {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .debug-info, .container {
+    max-width: 100%;
+    /* width: 100%; */
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    max-width: 100%;
+    padding: 2px;
+  }
+  
+  .entrada-numeros {
+    padding: 12px;
+    gap: 16px;
+  }
+  
+  .entrada-numeros h2 {
+    font-size: 1.1rem;
+  }
+  
+  .entrada-numeros .input-numero {
+    width: 100px;
+    padding: 6px 10px;
+  }
+  
+  .botones-operaciones {
+    gap: 10px;
+    padding: 14px;
+  }
+  
+  .btn {
+    padding: 8px 16px;
+    min-width: 110px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .entrada-numeros {
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .entrada-numeros h2 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+  
+  .entrada-numeros label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+  
+  .entrada-numeros .input-numero {
+    width: 140px;
+    padding: 8px 12px;
+    font-size: 1rem;
+  }
+  
+  .botones-operaciones {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 200px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    min-width: unset;
+  }
+  
+  .debug-info {
+    padding: 10px;
+  }
+  
+  .debug-info h3 {
+    font-size: 1em;
+  }
+  
+  .debug-info pre {
+    font-size: 0.85em;
+    max-width: 100%;
+    padding: 8px;
+  }
+  
+  .debug-details p {
+    font-size: 0.9em;
+    padding-left: 6px;
+  }
+}
+
+@media (max-width: 550px) {
+  .calculadora-container {
+    width: 100%;
+    max-width: 95vw;
+    padding: 1rem;
+  }
+  
+  .entrada-numeros {
+    padding: 12px;
+    gap: 16px;
+  }
+  
+  .entrada-numeros h2 {
+    font-size: 1rem;
+  }
+  
+  .entrada-numeros label {
+    font-size: 0.85rem;
+  }
+  
+  .entrada-numeros .input-numero {
+    width: 120px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+  
+  .botones-operaciones {
+    gap: 10px;
+    padding: 12px;
+  }
+  
+  .btn {
+    width: 180px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .debug-info {
+    padding: 8px;
+  }
+  
+  .debug-info h3 {
+    font-size: 0.95em;
+  }
+  
+  .debug-info pre {
+    font-size: 0.8em;
+    padding: 6px;
+  }
+  
+  .debug-details p {
+    font-size: 0.85em;
+    padding-left: 4px;
+  }
+  
+  .info-panel {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .info-operacion h2 {
+    font-size: 0.9rem;
+  }
+  
+  .info-operacion p {
+    font-size: 0.8rem;
+  }
+  
+  .resultado-numero {
+    font-size: clamp(18px, 5vw, 22px);
+  }
+  
+  .irp {
+    font-size: 0.75em;
+    padding: 3px 6px;
+  }
+  
+  .calculadora-container input[type="number"] {
+    width: 80px;
+  }
+}
+
+@media (max-width: 400px) {
+  .entrada-numeros {
+    padding: 10px;
+    gap: 12px;
+  }
+  
+  .entrada-numeros h2 {
+    font-size: 0.95rem;
+  }
+  
+  .entrada-numeros label {
+    font-size: 0.8rem;
+  }
+  
+  .entrada-numeros .input-numero {
+    width: 100px;
+    padding: 5px 8px;
+    font-size: 0.85rem;
+  }
+  
+  .botones-operaciones {
+    gap: 8px;
+    padding: 10px;
+  }
+  
+  .btn {
+    width: 160px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .debug-info {
+    padding: 6px;
+  }
+  
+  .debug-info h3 {
+    font-size: 0.9em;
+  }
+  
+  .debug-info pre {
+    font-size: 0.75em;
+    padding: 4px;
+  }
+  
+  .debug-details p {
+    font-size: 0.8em;
+    padding-left: 3px;
+  }
+  
+  .info-panel {
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .info-operacion h2 {
+    font-size: 0.85rem;
+  }
+  
+  .info-operacion p {
+    font-size: 0.75rem;
+  }
+  
+  .resultado-numero {
+    font-size: clamp(16px, 6vw, 20px);
+  }
+  
+  .irp {
+    font-size: 0.7em;
+    padding: 2px 5px;
+  }
+}
+
+
