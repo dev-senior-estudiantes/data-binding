@@ -54,6 +54,37 @@
     <button class="btn btn-limpiar-historial" (click)="limpiarHistorial()" [disabled]="!historial || historial.length === 0"> Limpiar Historial</button>
   </div>
 
+  <!-- Paneles de resultado e historial -->
+  <div class="paneles-operaciones">
+    <!-- Panel de Resultado Condicional -->
+    <div class="resultado-panel" *ngIf="mostrarResultado && resultado !== null">
+      <h2>Resultado de la operación</h2>
+      <div class="resultado-numero">{{ resultado }}</div>
+      <div class="resultado-info">
+        {{ numero1 }}
+        {{
+          operacionActual === 'suma' ? ' + ' :
+          operacionActual === 'resta' ? ' - ' :
+          operacionActual === 'multiplicacion' ? ' × ' :
+          operacionActual === 'division' ? ' ÷ ' : ' ? '
+        }}
+        {{ numero2 }} = {{ resultado }}
+      </div>
+    </div>
 
-  <!-- Historial de operaciones -->
+    <!-- Historial de operaciones -->
+    <div class="historial-panel" *ngIf="historial && historial.length > 0">
+      <h3>Historial de operaciones ({{ historial.length }})</h3>
+      <ul class="historial-lista">
+        <li *ngFor="let item of historial; let i = index; let first = first; let last = last"
+            class="historial-item"
+            [class.primer-item]="first"
+            [class.ultimo-item]="last">
+          <span>{{ i + 1 }}. {{ item }}</span>
+          <span class="badge badge-nuevo" *ngIf="first">NUEVO</span>
+          <span class="badge badge-antiguo" *ngIf="last && historial.length > 1">ANTIGUO</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
