@@ -96,6 +96,17 @@ export class Calculadora {
     return this.historial.length; // Retorna la cantidad de operaciones en el historial
   }
 
+  // Método para debug panel
+  public getDebugInfo() {
+    return {
+      numero1: this.numero1 ?? null,
+      numero2: this.numero2 ?? null,
+      operacionActual: this.operacionActual ?? '',
+      mostrarResultado: this.mostrarResultado ?? false,
+      resultado: this.resultado ?? null
+    };
+  }
+
 
   public calcular(operacion: string, num1:number, num2:number): number {
     switch (operacion){
