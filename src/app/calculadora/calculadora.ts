@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class Calculadora {
-  public numero1: number = 0;
-  public numero2: number= 0;
+  public numero1: number | null = null;
+  public numero2: number | null = null;
   public resultado: number = 0;
 
   //Variable string para el título de la calculadora
@@ -32,49 +32,54 @@ export class Calculadora {
   }
 
   public sumar(): void {
-    this.resultado = this.numero1 + this.numero2; 
+    if (this.numero1 !== null && this.numero2 !== null) {
+      this.resultado = this.numero1 + this.numero2; 
 
-    this.operacionActual = 'suma';
-    this.mostrarResultado = true;
-    // Template literal $ interpolación strings, Agregar la operación al historial
-    this.agregarAlHistorial(` ${this.numero1} + ${this.numero2} = ${this.resultado} `);
-
+      this.operacionActual = 'suma';
+      this.mostrarResultado = true;
+      // Template literal $ interpolación strings, Agregar la operación al historial
+      this.agregarAlHistorial(` ${this.numero1} + ${this.numero2} = ${this.resultado} `);
+    }
   }
 
   public restar(): void{
-    this.resultado = this.numero1 - this.numero2;
+    if (this.numero1 !== null && this.numero2 !== null) {
+      this.resultado = this.numero1 - this.numero2;
 
-    this.operacionActual = 'Restar';
-    this.mostrarResultado = true;
-    // Template literal $ interpolación strings, Agregar la operación al historial
-    this.agregarAlHistorial(` ${this.numero1} - ${this.numero2} = ${this.resultado} `);
-
+      this.operacionActual = 'Restar';
+      this.mostrarResultado = true;
+      // Template literal $ interpolación strings, Agregar la operación al historial
+      this.agregarAlHistorial(` ${this.numero1} - ${this.numero2} = ${this.resultado} `);
+    }
   }
 
   public dividir(): void {
-    if(this.numero2 != 0){
-      this.resultado = this.numero1 / this.numero2;
-      this.operacionActual = 'Division';
-      this.mostrarResultado = true;
-      // Template literal $ interpolación strings, Agregar la operación al historial
-      this.agregarAlHistorial(` ${this.numero1} / ${this.numero2} = ${this.resultado} `);
-    }else {
-      alert('No se puede dividir por cero');
+    if (this.numero1 !== null && this.numero2 !== null) {
+      if(this.numero2 != 0){
+        this.resultado = this.numero1 / this.numero2;
+        this.operacionActual = 'Division';
+        this.mostrarResultado = true;
+        // Template literal $ interpolación strings, Agregar la operación al historial
+        this.agregarAlHistorial(` ${this.numero1} / ${this.numero2} = ${this.resultado} `);
+      }else {
+        alert('No se puede dividir por cero');
+      }
     }
-    
   }
 
   public multiplicar(): void {
-    this.resultado = this.numero1 * this.numero2;
-    this.operacionActual = "Multiplicar";
-    this.mostrarResultado = true;
-    // Template literal $ interpolación strings, Agregar la operación al historial
-    this.agregarAlHistorial(` ${this.numero1} * ${this.numero2} = ${this.resultado} `);
+    if (this.numero1 !== null && this.numero2 !== null) {
+      this.resultado = this.numero1 * this.numero2;
+      this.operacionActual = "Multiplicar";
+      this.mostrarResultado = true;
+      // Template literal $ interpolación strings, Agregar la operación al historial
+      this.agregarAlHistorial(` ${this.numero1} * ${this.numero2} = ${this.resultado} `);
+    }
   }
 
   public limpiar(): void {
-    this.numero1 = 0;
-    this.numero2 = 0;
+    this.numero1 = null;
+    this.numero2 = null;
     this.resultado = 0;
     this.operacionActual = 'ninguna';
     this.mostrarResultado = false;
